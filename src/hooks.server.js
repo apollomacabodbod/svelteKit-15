@@ -23,3 +23,25 @@ function authorize ({ event, resolve }){
 }
 
 export const handle = sequence(logger,authorize)
+
+
+
+// Intercepting fetch
+export function handleFetch({ request, fetch }) {
+
+    return fetch(request)
+
+}
+
+// Intercepting Errors
+export function handleError({ error, event }){
+
+    return{
+
+        message: 'Oops, im intercepting in a hook',
+        code: error.code
+    }
+}
+
+
+
