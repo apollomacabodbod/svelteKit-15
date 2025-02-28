@@ -1,8 +1,11 @@
 
 
 
-export async function load({ fetch, params , setHeaders , locals }){
-    console.log("locals: ", locals)
+export async function load({ fetch, params , setHeaders , locals , parent}){
+
+    const parent_data = await parent()
+    console.log(parent_data)
+    
 
     const res = await fetch(`https://syntax.fm/api/shows/${params.num}`)
     const data = await res.json();
